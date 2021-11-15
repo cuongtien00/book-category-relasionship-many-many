@@ -1,5 +1,6 @@
 package com.cuongtien.service.category;
 
+import com.cuongtien.config.ConnectMYSQL;
 import com.cuongtien.model.Book;
 import com.cuongtien.model.Category;
 
@@ -8,27 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryService implements ICategoryService{
-    private String jdbcURL = "jdbc:mysql://localhost:3306/book_category_many_many?useSSL=false";
+    public static final String SELECT_FROM_CATEGORY_WHERE_ID = "select * from category where id = ?;";
+    public static final String SELECT_FROM_BOOK_CATEGORY_WHERE_BOOK_ID = "select *from book_category where book_id = ?;";
+    public static final String SELECT_FROM_CATEGORY = "select * from category;";
+    public static final String INSERT_INTO_BOOK_NAME_DESCRIPTION_VALUE = "insert into book (name,description)value (?,?);";
+    public static final String UPDATE_CATEGORY_SET_NAME_DESCRIPTION_WHERE_ID = "update category set name = ?, description = ? where id = ?";
+    public static final String DELETE_CATEGORY_WHERE_ID = "delete category where  id = ?;";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/book_category_many_many?allowPublicKeyRetrieval=true&useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "Cuongtien1809";
-    private  Connection connection = getConnection();
-    protected Connection getConnection(){
-        Connection connection = null;
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }
+    Connection connection = ConnectMYSQL.getConnection();
+//    private  Connection connection = getConnection();
     @Override
     public Category findById(int id) {
         Category category = null;
         try {
 //           /lay thong tin cua book
-            PreparedStatement statement = connection.prepareStatement("select * from category where id = ?;");
+            PreparedStatement statement = connection.prepareStatement(SELECT_FROM_CATEGORY_WHERE_ID);
        statement.setInt(1,id);
        ResultSet rs = statement.executeQuery();
        while (rs.next()){
@@ -46,7 +43,7 @@ return category;
     public List<Category> findAllCateOfBook(int book_id){
         List<Category> categories = new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement("select *from book_category where book_id = ?;");
+            PreparedStatement statement = connection.prepareStatement(SELECT_FROM_BOOK_CATEGORY_WHERE_BOOK_ID);
             statement.setInt(1,book_id);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
@@ -61,6 +58,7 @@ return category;
 
     }
     public List<Category> subList(List<Category> categories){
+
         List<Category>categoryListSun = new ArrayList<>();
         List<Category> categoryListFather = findAll();
         for (Category c: categoryListFather
@@ -77,7 +75,7 @@ return category;
     public List<Category> findAll() {
         List<Category> categories= new ArrayList<>();
         try {
-            PreparedStatement statement = connection.prepareStatement("select * from category;");
+            PreparedStatement statement = connection.prepareStatement(SELECT_FROM_CATEGORY);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 int id  = rs.getInt("id");
@@ -94,7 +92,7 @@ return category;
     @Override
     public boolean insert(Category category,int[]arr) throws SQLException {
         boolean rowInserted;
-        PreparedStatement statement = connection.prepareStatement("insert into book (name,description)value (?,?);");
+        PreparedStatement statement = connection.prepareStatement(INSERT_INTO_BOOK_NAME_DESCRIPTION_VALUE);
         statement.setString(1,category.getName());
         statement.setString(2,category.getDes());
         rowInserted = statement.executeUpdate()>0;
@@ -104,7 +102,7 @@ return category;
     @Override
     public boolean update(Category category,int[] arr) throws SQLException {
         boolean rowUpdated ;
-        PreparedStatement statement = connection.prepareStatement("update category set name = ?, description = ? where id = ?");
+        PreparedStatement statement = connection.prepareStatement(UPDATE_CATEGORY_SET_NAME_DESCRIPTION_WHERE_ID);
         statement.setString(1,category.getName());
         statement.setString(2,category.getDes());
         statement.setInt(3,category.getId());
@@ -115,7 +113,7 @@ return category;
     @Override
     public boolean delete(int id) throws SQLException {
         boolean rowDeleted;
-        PreparedStatement statement = connection.prepareStatement("delete category where  id = ?;");
+        PreparedStatement statement = connection.prepareStatement(DELETE_CATEGORY_WHERE_ID);
         statement.setInt(1,id);
        rowDeleted = statement.executeUpdate()>0;
        return rowDeleted;

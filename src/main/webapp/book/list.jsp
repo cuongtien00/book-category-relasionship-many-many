@@ -32,8 +32,8 @@
 </head>
 <body>
 <div align="center">
-    <h2><a href="/books">Book Management</a></h2>
-    <h2><a href="/books?action=create">Create New Book</a></h2>
+    <h2><a href="/books" style="color: white">Book Management</a></h2>
+    <h2><a href="/books?action=create" style="color: white">Create New Book</a></h2>
     <table border="1" class="table table-warning table-striped table-hover">
         <tr>
             <th>Name</th>
@@ -64,15 +64,15 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="https://i.ytimg.com/vi/SpOcGsmGpQI/maxresdefault.jpg" class="d-block w-100" alt="...">
+                <img src="https://i.ytimg.com/vi/SpOcGsmGpQI/maxresdefault.jpg" class="d-block w-100" alt="..." style="width: 100%;height: 100%">
             </div>
             <div class="carousel-item active">
                 <img src="https://images.wallpaperscraft.com/image/single/library_books_reading_125466_1280x720.jpg" class="d-block w-100"
-                     alt="...">
+                     alt="..." style="width: 100%;height: 100%">
             </div>
             <div class="carousel-item">
                 <img src="https://www.privateinternetaccess.com/blog/wp-content/uploads/2017/12/antique-library-picture-id495747679.jpg"
-                     class="d-block w-100" alt="...">
+                     class="d-block w-100"  alt="..." style="width: 100%;height: 100%">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -87,13 +87,13 @@
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
-                <img src="https://chonlatot.com/wp-content/uploads/2020/02/nhung-cuon-sach-hay-nhat-moi-thoi-dai-chonlatot-com.jpg" class="d-block w-100" alt="...">
+                <img src="https://chonlatot.com/wp-content/uploads/2020/02/nhung-cuon-sach-hay-nhat-moi-thoi-dai-chonlatot-com.jpg" class="d-block w-100" alt="..." style="width: 100%;height: 100%">
             </div>
             <div class="carousel-item" data-bs-interval="2000" >
-                <img src="https://minhkietcafe.vn/wp-content/uploads/2020/09/cafe-sach-hay-o-ha-noi-1.jpg" class="d-block w-100" alt="...">
+                <img src="https://minhkietcafe.vn/wp-content/uploads/2020/09/cafe-sach-hay-o-ha-noi-1.jpg" class="d-block w-100" alt="..." style="width: 100%;height: 100%">
             </div>
             <div class="carousel-item">
-                <img src="https://bookriot.com/wp-content/uploads/2019/09/image-of-student-at-library-1280x720.jpg" alt="...">
+                <img src="https://images.wallpaperscraft.com/image/single/book_hands_reading_134405_1280x720.jpg" alt="..." style="width: 100%;height: 100%">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="carousel-item" >
-                <img src="http://faqtrans.vn/wp-content/uploads/2021/08/book-6176809_1280.jpg" alt="...">
+                <img src="https://wallpapersmug.com/download/1280x720/f12332/books.jpg" alt="..." style="width: 100%">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Third slide label</h5>
                     <p>Some representative placeholder content for the third slide.</p>

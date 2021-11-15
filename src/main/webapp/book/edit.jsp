@@ -36,9 +36,9 @@
 </head>
 <body>
 <div align="center">
-    <h2><a href="/books">Book Management</a></h2>
+    <h2><a href="/books" style="color: white">Book Management</a></h2>
    <fieldset>
-       <legend>Edit Information</legend>
+       <legend style="color: white">Edit Information</legend>
        <form method="post">
            <table border="1" class="table table-warning table-striped table-hover">
                <tr>
@@ -75,7 +75,7 @@
        </form>
    </fieldset>
     <h3><c:if test="${message!=null}">
-        <span>${message}</span>
+        <span style="color: white">${message}</span>
     </c:if></h3>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
