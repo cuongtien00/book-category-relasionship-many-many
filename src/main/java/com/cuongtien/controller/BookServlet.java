@@ -65,6 +65,7 @@ switch (action){
         Book book = bookService.findById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("book/edit.jsp");
         request.setAttribute("book",book);
+        request.setAttribute("cateListOfBook",book.getCategories());
         request.setAttribute("subList",categoryService.findAll());
         try {
             dispatcher.forward(request,response);
